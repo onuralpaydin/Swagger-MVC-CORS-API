@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+<h1>Student List</h1>
+<p id="st">
+    @*//ajax ile apiden studentList çekip p elementine append ile bağlayalım.*@
+    @*ajax jquery nin kütüphanesi*@
+<p>
+
+    @section Scripts
+    {
+        <script>
+            $.ajax(
+                {
+                    url: "https://localhost:7290/api/Students",
+                    method:"POST",
+                    success:function(data){
+                        for(var student of data)
+                        {
+                            $("#st").append(student.adi)
+                        }
+
+                    }
+                }
+            )
+        </script>
+        @*data ile çektiğim yer dizi. for ile dönüyorum. her studentin içindeki adi propertisini alıyorum. property adı aynı olmak zorunda*@
+        @*iki projem aynı anda çalışmıyor. ulaşaayacak*@
+        @*projelerin ikisinide çalıştırmak lazım*@
+        @*solution sağ tıkla aynı anda ikisini de çalıştır set as startup project api üstte olsun.*@
+    @*Access to XMLHttpRequest at 'https://localhost:7290/api/Students' from origin 'https://localhost:7190' has been blocked by CORS policy: No 'Access-Control-Allow-Origin' header is present on the requested resource.*@
+    @*bu hatayı aldık almamız lazım*@
+    @*bu hata ne demek apiden bilgi istiyorsun ama apiye ulaşma yetkin yok. Yetki vermemiz gerekiyor.*@
+    }
