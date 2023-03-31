@@ -29,6 +29,8 @@ namespace WebApiBorsa.Controllers
             {
                 return NotFound(); //not found kullanmak istiyorum. müsade etmiyor. actionresult tanımlarsam hem sayfa döndürcem hem de döndüreceğim sayfa decimal tipinde de olabilir.
                 //404 not found.
+
+                //rest servis soap servis.
             }
             return bulunacakKur.Deger;
         }
